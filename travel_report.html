@@ -1,1 +1,1357 @@
-placeholder
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SFA 영월 여행 경비 리포트 — 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #0e0e0e;
+  --ink-2: #3a3a3a;
+  --ink-3: #7a7a7a;
+  --ink-4: #b8b8b8;
+  --paper: #fafaf8;
+  --paper-2: #f2f1ee;
+  --rule: #e4e3df;
+  --accent: #1a4a6b;
+  --accent-2: #2d7aaa;
+  --warm: #c4874a;
+  --receive: #1a5c3a;
+  --pay: #8a3a1a;
+
+  --f-display: 'Playfair Display', Georgia, serif;
+  --f-body: 'DM Sans', 'Noto Sans KR', sans-serif;
+  --f-kr: 'Noto Sans KR', sans-serif;
+
+  --max: 960px;
+  --gap: clamp(2rem, 5vw, 4rem);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── UTILITY ── */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 3rem); }
+.mono { font-variant-numeric: tabular-nums; }
+hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 3rem);
+  max-width: var(--max);
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-meta {
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.1s ease forwards;
+}
+
+.hero-meta span::before {
+  content: '—';
+  margin-right: 0.5rem;
+  color: var(--ink-4);
+}
+.hero-meta span:first-child::before { display: none; }
+
+.hero-body {
+  align-self: center;
+  padding: 4rem 0 2rem;
+}
+
+.hero-label {
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s ease forwards;
+}
+
+.hero-title {
+  font-family: var(--f-display);
+  font-size: clamp(3.5rem, 10vw, 7.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  opacity: 0;
+  animation: fadeUp 0.9s 0.3s ease forwards;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-title .kr {
+  font-family: var(--f-kr);
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  display: block;
+  margin-top: 0.3em;
+  color: var(--ink-2);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: clamp(3rem, 6vw, 5rem);
+  border-top: 1px solid var(--rule);
+  opacity: 0;
+  animation: fadeUp 0.8s 0.6s ease forwards;
+}
+
+.hero-stat {
+  padding: 1.5rem 0 0;
+  padding-right: 1rem;
+}
+
+.hero-stat + .hero-stat {
+  border-left: 1px solid var(--rule);
+  padding-left: 1.5rem;
+}
+
+.stat-num {
+  font-family: var(--f-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--ink);
+  display: block;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 0.3rem;
+  display: block;
+}
+
+/* ── SECTION STRUCTURE ── */
+.section {
+  padding: var(--gap) 0;
+  border-top: 1px solid var(--rule);
+}
+
+.section-inner { padding: var(--gap) 0; }
+
+.section-num {
+  font-family: var(--f-display);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--ink-4);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--f-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.section-title em { font-style: italic; color: var(--accent); }
+
+/* ── CONDITION CARDS ── */
+.cond-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--rule);
+  margin-bottom: 2rem;
+}
+
+.cond-card {
+  padding: 1.8rem 1.5rem;
+  border-right: 1px solid var(--rule);
+  transition: background 0.2s;
+}
+.cond-card:last-child { border-right: none; }
+.cond-card:hover { background: var(--paper-2); }
+
+.cond-icon { font-size: 1.1rem; margin-bottom: 0.8rem; }
+.cond-key {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 0.4rem;
+}
+.cond-val {
+  font-family: var(--f-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.cond-sub {
+  font-size: 12px;
+  color: var(--ink-3);
+  margin-top: 0.3rem;
+  font-family: var(--f-kr);
+}
+
+/* ── NOTE ── */
+.note {
+  background: var(--paper-2);
+  border-left: 2px solid var(--accent);
+  padding: 1.2rem 1.5rem;
+  font-size: 13px;
+  font-family: var(--f-kr);
+  color: var(--ink-2);
+  line-height: 1.9;
+  margin-bottom: 2.5rem;
+}
+.note strong { color: var(--accent); font-weight: 500; }
+
+/* ── TABLES ── */
+.tbl-wrap { overflow-x: auto; margin-bottom: 0.5rem; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--f-kr);
+  font-size: 13px;
+}
+
+thead th {
+  text-align: left;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+tbody td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: middle;
+  color: var(--ink-2);
+}
+
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: var(--paper-2); }
+
+.tbl-section td {
+  padding: 0.5rem 1rem 0.2rem;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  background: var(--paper-2);
+  border-bottom: none;
+}
+
+.tbl-total td {
+  border-top: 1px solid var(--ink);
+  border-bottom: none;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.amt {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+/* ── PAYER TAG ── */
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: var(--f-kr);
+  padding: 0.15rem 0.6rem;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.tag-슬기  { background: #f0e6ed; color: #7a2050; }
+.tag-행범  { background: #e6edf5; color: #1a3a6a; }
+.tag-경건  { background: #e6f0ea; color: #1a4a2a; }
+.tag-병춘  { background: #f5ede6; color: #6a3010; }
+.tag-제영  { background: #ede6f5; color: #4a1a7a; }
+.tag-충엽  { background: #f5e6e6; color: #6a1a1a; }
+.tag-각자  { background: #f0f0f0; color: #6a6a6a; }
+
+.badge {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 0.1rem 0.5rem;
+  border-radius: 2px;
+}
+.badge-round { background: #e8f0f8; color: var(--accent); }
+.badge-one   { background: #fdf0e0; color: #804a10; }
+
+/* ── PAYER SUMMARY ── */
+.payer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 3rem;
+}
+
+.payer-card {
+  background: var(--paper);
+  padding: 1.8rem 1.5rem;
+  transition: background 0.2s;
+}
+.payer-card:hover { background: var(--paper-2); }
+
+.payer-name {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 0.6rem;
+  font-family: var(--f-kr);
+}
+
+.payer-amt {
+  font-family: var(--f-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+
+/* ── SETTLEMENT ── */
+.settle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+
+.settle-card {
+  background: var(--paper);
+  padding: 1.6rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 0.5rem;
+  transition: background 0.2s;
+}
+.settle-card:hover { background: var(--paper-2); }
+
+.settle-name {
+  font-family: var(--f-kr);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.settle-detail {
+  font-size: 12px;
+  color: var(--ink-3);
+  font-family: var(--f-kr);
+  line-height: 1.6;
+}
+
+.settle-result {
+  text-align: right;
+  font-family: var(--f-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.receive { color: var(--receive); }
+.pay     { color: var(--pay); }
+
+/* ── GALLERY ── */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 2px;
+  background: var(--paper-2);
+}
+
+.gallery-item {
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4/3;
+  background: var(--paper-2);
+}
+
+.gallery-item:first-child {
+  grid-column: span 2;
+  aspect-ratio: 16/9;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease, filter 0.4s;
+  filter: saturate(0.85);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.04);
+  filter: saturate(1);
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  font-family: var(--f-body);
+}
+
+/* ── TOTAL BAND ── */
+.total-band {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  text-align: center;
+}
+
+.total-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 1rem;
+}
+
+.total-num {
+  font-family: var(--f-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.total-sub {
+  font-size: 13px;
+  color: var(--ink-3);
+  margin-top: 1rem;
+  font-family: var(--f-kr);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 2.5rem 0;
+  text-align: center;
+  font-size: 11px;
+  color: var(--ink-4);
+  letter-spacing: 0.1em;
+  font-family: var(--f-body);
+  border-top: 1px solid var(--rule);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .cond-grid  { grid-template-columns: repeat(2, 1fr); }
+  .cond-card  { border-bottom: 1px solid var(--rule); }
+  .payer-grid { grid-template-columns: repeat(2, 1fr); }
+  .settle-grid { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: 1fr 1fr; }
+  .gallery-item:first-child { grid-column: span 2; }
+  thead { display: none; }
+  tbody td { display: block; padding: 0.4rem 1rem; }
+  tbody td::before { content: attr(data-label); color: var(--ink-3); font-size:11px; display:block; }
+  tbody tr { border-bottom: 1px solid var(--rule); margin-bottom: 0.5rem; display: block; }
+}
+
+/* Receipt & Modal */
+tr.has-receipt { cursor: pointer; }
+tr.has-receipt:hover td { background: #f5f0e8 !important; }
+tr.has-receipt td:first-child::after {
+  content: ' 🧾';
+  font-size: 11px;
+  opacity: 0.5;
+}
+
+.clickable-settle { cursor: pointer; transition: box-shadow 0.2s, transform 0.15s; }
+.clickable-settle:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.10); transform: translateY(-1px); }
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,10,0.7);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  padding: 1.5rem;
+}
+.modal-overlay.open { display: flex; }
+
+.modal-box {
+  background: var(--paper);
+  border-radius: 4px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 90svh;
+  overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+  animation: modalIn 0.25s ease;
+}
+@keyframes modalIn {
+  from { opacity:0; transform: scale(0.95) translateY(12px); }
+  to   { opacity:1; transform: scale(1) translateY(0); }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--rule);
+  position: sticky;
+  top: 0;
+  background: var(--paper);
+}
+.modal-title { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; font-family: var(--f-kr); }
+.modal-close {
+  background: none; border: none; cursor: pointer;
+  font-size: 1.2rem; color: var(--ink-3);
+  width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; transition: background 0.15s;
+}
+.modal-close:hover { background: var(--paper-2); }
+
+.modal-body { padding: 1.5rem; }
+
+.modal-img { width: 100%; border-radius: 2px; display: block; }
+
+/* settle modal */
+.settle-modal-kind {
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 0.5rem; font-family: var(--f-body);
+}
+.settle-modal-name {
+  font-family: var(--f-display); font-size: 1.6rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 0.3rem;
+}
+.settle-modal-amt {
+  font-family: var(--f-display); font-size: 1.2rem; font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+.settle-modal-amt.receive { color: var(--receive); }
+.settle-modal-amt.pay     { color: var(--pay); }
+
+.account-box {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1rem;
+}
+.account-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.5rem; font-family: var(--f-body); }
+.account-value { font-family: var(--f-display); font-size: 1.05rem; font-weight: 700; color: var(--ink); }
+.account-name  { font-size: 13px; color: var(--ink-2); margin-top: 0.25rem; font-family: var(--f-kr); }
+
+.copy-btn {
+  width: 100%; padding: 0.85rem;
+  background: var(--ink); color: var(--paper);
+  border: none; border-radius: 3px;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.08em;
+  cursor: pointer; font-family: var(--f-kr);
+  transition: background 0.15s;
+}
+.copy-btn:hover { background: var(--accent); }
+.copy-btn.copied { background: var(--receive); }
+
+.receive-input-group {
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.receive-input-group input {
+  width: 100%; padding: 0.8rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-size: 14px; font-family: var(--f-kr);
+  background: var(--paper);
+  outline: none; transition: border-color 0.15s;
+}
+.receive-input-group input:focus { border-color: var(--accent); }
+.receive-input-group label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); font-family: var(--f-body); }
+.save-btn {
+  width: 100%; padding: 0.85rem;
+  background: var(--accent); color: white;
+  border: none; border-radius: 3px;
+  font-size: 13px; font-weight: 500;
+  cursor: pointer; font-family: var(--f-kr);
+  transition: background 0.15s;
+}
+.save-btn:hover { background: var(--river-dark, #0d3a5a); }
+.saved-account {
+  padding: 1rem 0;
+  font-size: 13px; color: var(--ink-2);
+  font-family: var(--f-kr); line-height: 1.8;
+}
+</style>
+</head>
+<body>
+
+<!-- ░░ HERO ░░ -->
+<div class="hero">
+  <nav class="hero-meta">
+    <span>2026. 05. 30 — 31</span>
+    <span>강원도 영월</span>
+    <span>동강시스타 리조트</span>
+    <span>19명 · 1박 2일</span>
+  </nav>
+
+  <div class="hero-body">
+    <p class="hero-label">Travel Expense Report</p>
+    <h1 class="hero-title">
+      <em>SFA Yeongwol</em>
+      <span class="kr">SFA 영월 여행</span>
+    </h1>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="stat-num">19</span>
+        <span class="stat-label">참가 인원</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num">2</span>
+        <span class="stat-label">일 · 1박</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num mono">2,266,540</span>
+        <span class="stat-label">원 · 총 지출</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num mono">~121,500</span>
+        <span class="stat-label">원 · 1인 평균</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ░░ 01 경비 계산 조건 ░░ -->
+<div class="section reveal">
+  <div class="container">
+    <div class="section-inner">
+      <p class="section-num">01 / Conditions</p>
+      <h2 class="section-title">경비 계산 <em>조건</em></h2>
+
+      <div class="cond-grid">
+        <div class="cond-card">
+          <div class="cond-icon">↗</div>
+          <div class="cond-key">차량 수</div>
+          <div class="cond-val">4대</div>
+          <div class="cond-sub">3대 왕복 · 1대 편도</div>
+        </div>
+        <div class="cond-card">
+          <div class="cond-icon">◎</div>
+          <div class="cond-key">편도 거리</div>
+          <div class="cond-val">171<small style="font-size:1rem;font-weight:400"> km</small></div>
+          <div class="cond-sub">왕복 342 km</div>
+        </div>
+        <div class="cond-card">
+          <div class="cond-icon">◈</div>
+          <div class="cond-key">유가</div>
+          <div class="cond-val">2,010<small style="font-size:1rem;font-weight:400"> 원/L</small></div>
+          <div class="cond-sub">기준 유가</div>
+        </div>
+        <div class="cond-card">
+          <div class="cond-icon">∿</div>
+          <div class="cond-key">연비</div>
+          <div class="cond-val">16<small style="font-size:1rem;font-weight:400"> km/L</small></div>
+          <div class="cond-sub">4대 동일 적용</div>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>정산 예외 조건</strong><br>
+        충엽 차량은 편도만 계산 (왕복의 50%) &nbsp;·&nbsp; 충엽·충엽 아들은 2일차 점심·커피 정산 제외 &nbsp;·&nbsp; 아들은 부모와 합산 정산
+      </div>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>담당</th><th>구분</th><th>계산식</th><th style="text-align:right">금액</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>행범</strong></td>
+              <td><span class="badge badge-round">왕복</span></td>
+              <td style="color:var(--ink-3);font-size:12px">342 km ÷ 16 × 2,010원</td>
+              <td style="text-align:right" class="amt">42,963원</td>
+            </tr>
+            <tr>
+              <td><strong>제영</strong></td>
+              <td><span class="badge badge-round">왕복</span></td>
+              <td style="color:var(--ink-3);font-size:12px">342 km ÷ 16 × 2,010원</td>
+              <td style="text-align:right" class="amt">42,963원</td>
+            </tr>
+            <tr>
+              <td><strong>경건</strong></td>
+              <td><span class="badge badge-round">왕복</span></td>
+              <td style="color:var(--ink-3);font-size:12px">342 km ÷ 16 × 2,010원</td>
+              <td style="text-align:right" class="amt">42,963원</td>
+            </tr>
+            <tr>
+              <td><strong>충엽</strong></td>
+              <td><span class="badge badge-one">편도</span></td>
+              <td style="color:var(--ink-3);font-size:12px">171 km ÷ 16 × 2,010원</td>
+              <td style="text-align:right" class="amt">21,481원</td>
+            </tr>
+            <tr class="tbl-total">
+              <td colspan="3"><strong>교통비 합계</strong></td>
+              <td style="text-align:right" class="amt">150,370원</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ░░ 02 전체 지출 내역 ░░ -->
+<div class="section reveal">
+  <div class="container">
+    <div class="section-inner">
+      <p class="section-num">02 / Expenses</p>
+      <h2 class="section-title">전체 지출 <em>내역</em></h2>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>날짜</th><th>구분</th><th>매장 / 내용</th><th>결제자</th><th style="text-align:right">금액</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tbl-section"><td colspan="5">출발 전 준비</td></tr>
+            <tr data-receipt="r_coupang2" class="has-receipt">
+              <td data-label="날짜">5/22</td>
+              <td data-label="구분">장보기</td>
+              <td data-label="내용">쿠팡 — 사발면·쥐포·음료수</td>
+              <td data-label="결제자"><span class="tag tag-행범">행범</span></td>
+              <td data-label="금액" style="text-align:right" class="amt">69,760원</td>
+            </tr>
+            <tr data-receipt="r_emart" class="has-receipt">
+              <td>5/27</td><td>장보기</td>
+              <td>이마트 — 과자류 (프링글스, 농심 등)</td>
+              <td><span class="tag tag-행범">행범</span></td>
+              <td style="text-align:right" class="amt">50,070원</td>
+            </tr>
+            <tr data-receipt="r_coupang1" class="has-receipt">
+              <td>5/28</td><td>장보기</td>
+              <td>쿠팡 — 탐사 아메리카노 등</td>
+              <td><span class="tag tag-행범">행범</span></td>
+              <td style="text-align:right" class="amt">40,340원</td>
+            </tr>
+            <tr data-receipt="r_mart" class="has-receipt">
+              <td>5/29</td><td>장보기</td>
+              <td>저도마트 — 국산 하우스 수박 7kg</td>
+              <td><span class="tag tag-행범">행범</span></td>
+              <td style="text-align:right" class="amt">29,800원</td>
+            </tr>
+
+            <tr class="tbl-section"><td colspan="5">1일차 — 5/30 토요일</td></tr>
+            <tr>
+              <td>5/30</td><td>교통비</td>
+              <td>차량 4대 (행범·제영·경건 왕복 / 충엽 편도)</td>
+              <td><span class="tag tag-각자">각자</span></td>
+              <td style="text-align:right" class="amt">150,370원</td>
+            </tr>
+            <tr data-receipt="r_lunch1" class="has-receipt">
+              <td>5/30</td><td>점심</td>
+              <td>감자바우 — 옹심이칼국수 ×18, 칼국수 ×1</td>
+              <td><span class="tag tag-슬기">슬기</span></td>
+              <td style="text-align:right" class="amt">170,000원</td>
+            </tr>
+            <tr data-receipt="r_chicken" class="has-receipt">
+              <td>5/30</td><td>간식</td>
+              <td>이기닭강정 — 순한(대) ×2, 매운(대) ×1, 닭강정 ×1</td>
+              <td><span class="tag tag-병춘">병춘</span></td>
+              <td style="text-align:right" class="amt">92,000원</td>
+            </tr>
+            <tr data-receipt="r_cu1" class="has-receipt">
+              <td>5/30</td><td>장보기</td>
+              <td>CU — 순얼음 800g ×3</td>
+              <td><span class="tag tag-슬기">슬기</span></td>
+              <td style="text-align:right" class="amt">5,700원</td>
+            </tr>
+            <tr data-receipt="r_cu2" class="has-receipt">
+              <td>5/30</td><td>장보기</td>
+              <td>CU — 순얼음 ×4, 체리블라썸비누 ×2 등</td>
+              <td><span class="tag tag-행범">행범</span></td>
+              <td style="text-align:right" class="amt">13,700원</td>
+            </tr>
+            <tr data-receipt="r_bbq" class="has-receipt">
+              <td>5/30</td><td>바베큐</td>
+              <td>에스엠동강시스타 — 바베큐 1차</td>
+              <td><span class="tag tag-경건">경건</span></td>
+              <td style="text-align:right" class="amt">366,000원</td>
+            </tr>
+            <tr data-receipt="r_cu4" class="has-receipt">
+              <td>5/30</td><td>바베큐</td>
+              <td>더그릴 (동강시스타) — 사이다 ×3</td>
+              <td><span class="tag tag-행범">행범</span></td>
+              <td style="text-align:right" class="amt">6,000원</td>
+            </tr>
+            <tr data-receipt="r_resort" class="has-receipt">
+              <td>5/30</td><td>숙박</td>
+              <td>탑스텐리조트 — 로얄스위트A ×2</td>
+              <td><span class="tag tag-행범">행범</span></td>
+              <td style="text-align:right" class="amt">624,000원</td>
+            </tr>
+            <tr data-receipt="r_resort2" class="has-receipt">
+              <td>5/30</td><td>부대시설</td>
+              <td>동강시스타 — 수영장·레이트체크아웃·추가침구·탁구</td>
+              <td><span class="tag tag-슬기">슬기</span></td>
+              <td style="text-align:right" class="amt">205,000원</td>
+            </tr>
+            <tr data-receipt="r_cu3" class="has-receipt">
+              <td>5/30</td><td>장보기</td>
+              <td>CU — 순얼음 800g ×6</td>
+              <td><span class="tag tag-슬기">슬기</span></td>
+              <td style="text-align:right" class="amt">11,400원</td>
+            </tr>
+            <tr>
+              <td>5/30</td><td>관광</td>
+              <td>천문대 입장료</td>
+              <td><span class="tag tag-행범">행범</span></td>
+              <td style="text-align:right" class="amt">71,000원</td>
+            </tr>
+
+            <tr class="tbl-section"><td colspan="5">2일차 — 5/31 일요일</td></tr>
+            <tr data-receipt="r_cu4" class="has-receipt">
+              <td>5/31</td><td>장보기</td>
+              <td>CU — 서울 멜균우유 200ml ×4</td>
+              <td><span class="tag tag-행범">행범</span></td>
+              <td style="text-align:right" class="amt">4,800원</td>
+            </tr>
+            <tr data-receipt="r_lunch2" class="has-receipt">
+              <td>5/31</td><td>점심 <span style="font-size:10px;color:var(--ink-3)">*충엽제외</span></td>
+              <td>명가 — 버섯불고기 ×14, 오삼불고기 ×6, 공기밥 ×16</td>
+              <td><span class="tag tag-슬기">슬기</span></td>
+              <td style="text-align:right" class="amt">324,000원</td>
+            </tr>
+            <tr data-receipt="r_coffee" class="has-receipt">
+              <td>5/31</td><td>커피 <span style="font-size:10px;color:var(--ink-3)">*충엽제외</span></td>
+              <td>메가커피 영월중앙점 — 8잔</td>
+              <td><span class="tag tag-슬기">슬기</span></td>
+              <td style="text-align:right" class="amt">22,400원</td>
+            </tr>
+            <tr data-receipt="r_icecream" class="has-receipt">
+              <td>5/31</td><td>아이스크림 <span style="font-size:10px;color:var(--ink-3)">*충엽제외</span></td>
+              <td>민트초코 영월점 — 빵또아블루베리·돼지바블랙·메로나×2·윌드콘쿠키×2·돼지콘·빵또아고구마·빵바레바닐</td>
+              <td><span class="tag tag-경건">경건</span></td>
+              <td style="text-align:right" class="amt">10,200원</td>
+            </tr>
+
+            <tr class="tbl-total">
+              <td colspan="4"><strong>총 지출 합계</strong></td>
+              <td style="text-align:right" class="amt">2,266,540원</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ░░ 03 결제자별 ░░ -->
+<div class="section reveal">
+  <div class="container">
+    <div class="section-inner">
+      <p class="section-num">03 / By Payer</p>
+      <h2 class="section-title">결제자별 <em>지출</em></h2>
+
+      <div class="payer-grid">
+        <div class="payer-card">
+          <div class="payer-name">슬기</div>
+          <div class="payer-amt mono">738,500</div>
+          <div style="font-size:11px;color:var(--ink-3);margin-top:0.3rem;font-family:var(--f-kr)">원</div>
+        </div>
+        <div class="payer-card">
+          <div class="payer-name">행범</div>
+          <div class="payer-amt mono">952,433</div>
+          <div style="font-size:11px;color:var(--ink-3);margin-top:0.3rem;font-family:var(--f-kr)">원</div>
+        </div>
+        <div class="payer-card">
+          <div class="payer-name">경건</div>
+          <div class="payer-amt mono">419,163</div>
+          <div style="font-size:11px;color:var(--ink-3);margin-top:0.3rem;font-family:var(--f-kr)">원</div>
+        </div>
+        <div class="payer-card">
+          <div class="payer-name">병춘</div>
+          <div class="payer-amt mono">92,000</div>
+          <div style="font-size:11px;color:var(--ink-3);margin-top:0.3rem;font-family:var(--f-kr)">원</div>
+        </div>
+        <div class="payer-card">
+          <div class="payer-name">제영</div>
+          <div class="payer-amt mono">42,963</div>
+          <div style="font-size:11px;color:var(--ink-3);margin-top:0.3rem;font-family:var(--f-kr)">원</div>
+        </div>
+        <div class="payer-card">
+          <div class="payer-name">충엽</div>
+          <div class="payer-amt mono">21,481</div>
+          <div style="font-size:11px;color:var(--ink-3);margin-top:0.3rem;font-family:var(--f-kr)">원</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ░░ 04 정산 ░░ -->
+<div class="section reveal">
+  <div class="container">
+    <div class="section-inner">
+      <p class="section-num">04 / Settlement</p>
+      <h2 class="section-title">최종 <em>정산</em></h2>
+
+      <div class="note" style="margin-bottom:2rem">
+        <strong>정산 기준</strong> &nbsp;·&nbsp; 일반 참가자 1인 121,500원 &nbsp;·&nbsp; 충엽·충엽아들 1인 100,523원 (2일차 제외) &nbsp;·&nbsp; 아들 포함 가족 합산
+      </div>
+
+      <div class="settle-grid">
+        <div class="settle-card clickable-settle" data-settle="receive" data-name="슬기 + 아들">
+          <div>
+            <div class="settle-name">슬기 + 아들</div>
+            <div class="settle-detail">내야 할 금액 243,000원 · 실제 지출 738,500원</div>
+          </div>
+          <div class="settle-result receive">+495,500원</div>
+        </div>
+        <div class="settle-card clickable-settle" data-settle="receive" data-name="행범 + 아들">
+          <div>
+            <div class="settle-name">행범 + 아들</div>
+            <div class="settle-detail">내야 할 금액 243,000원 · 실제 지출 952,433원</div>
+          </div>
+          <div class="settle-result receive">+709,433원</div>
+        </div>
+        <div class="settle-card clickable-settle" data-settle="receive" data-name="경건 + 아들">
+          <div>
+            <div class="settle-name">경건 + 아들</div>
+            <div class="settle-detail">내야 할 금액 243,000원 · 실제 지출 419,163원</div>
+          </div>
+          <div class="settle-result receive">+176,163원</div>
+        </div>
+        <div class="settle-card clickable-settle" data-settle="pay" data-name="병춘 + 아들">
+          <div>
+            <div class="settle-name">병춘 + 아들</div>
+            <div class="settle-detail">내야 할 금액 243,000원 · 실제 지출 92,000원</div>
+          </div>
+          <div class="settle-result pay">−151,000원</div>
+        </div>
+        <div class="settle-card clickable-settle" data-settle="pay" data-name="제영 + 아들">
+          <div>
+            <div class="settle-name">제영 + 아들</div>
+            <div class="settle-detail">내야 할 금액 243,000원 · 실제 지출 42,963원</div>
+          </div>
+          <div class="settle-result pay">−200,037원</div>
+        </div>
+        <div class="settle-card clickable-settle" data-settle="pay" data-name="충엽 + 아들">
+          <div>
+            <div class="settle-name">충엽 + 아들</div>
+            <div class="settle-detail">내야 할 금액 201,046원 · 실제 지출 21,481원</div>
+          </div>
+          <div class="settle-result pay">−179,565원</div>
+        </div>
+        <div class="settle-card clickable-settle" data-settle="pay" data-name="용현 + 아들">
+          <div>
+            <div class="settle-name">용현 + 아들</div>
+            <div class="settle-detail">내야 할 금액 243,000원 · 실제 지출 0원</div>
+          </div>
+          <div class="settle-result pay">−243,000원</div>
+        </div>
+        <div class="settle-card clickable-settle" data-settle="pay" data-name="규감 + 아들">
+          <div>
+            <div class="settle-name">규감 + 아들</div>
+            <div class="settle-detail">내야 할 금액 243,000원 · 실제 지출 0원</div>
+          </div>
+          <div class="settle-result pay">−243,000원</div>
+        </div>
+        <div class="settle-card clickable-settle" data-settle="pay" data-name="상동 + 아들">
+          <div>
+            <div class="settle-name">상동 + 아들</div>
+            <div class="settle-detail">내야 할 금액 243,000원 · 실제 지출 0원</div>
+          </div>
+          <div class="settle-result pay">−243,000원</div>
+        </div>
+        <div class="settle-card clickable-settle" data-settle="pay" data-name="용준">
+          <div>
+            <div class="settle-name">용준</div>
+            <div class="settle-detail">내야 할 금액 121,500원 · 실제 지출 0원</div>
+          </div>
+          <div class="settle-result pay">−121,500원</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ░░ 05 갤러리 ░░ -->
+<div class="section reveal">
+  <div class="container">
+    <div class="section-inner">
+      <p class="section-num">05 / Memories</p>
+      <h2 class="section-title">영월 동강 <em>풍경</em></h2>
+    </div>
+  </div>
+  <div class="gallery">
+    <div class="gallery-item" style="grid-column:span 2">
+      <img src="images/img01.jpg" alt="수영장" loading="lazy">
+      <span class="gallery-caption">수영장</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/img02.jpg" alt="영월 자연 풍경" loading="lazy">
+      <span class="gallery-caption">영월 자연 풍경</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/img03.jpg" alt="축구 & 동강" loading="lazy">
+      <span class="gallery-caption">축구 & 동강</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/img04.jpg" alt="출발! 차 안에서" loading="lazy">
+      <span class="gallery-caption">출발! 차 안에서</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/img05.jpg" alt="차 안에서" loading="lazy">
+      <span class="gallery-caption">차 안에서</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/img06.jpg" alt="차 안에서" loading="lazy">
+      <span class="gallery-caption">차 안에서</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/img07.jpg" alt="차 안에서" loading="lazy">
+      <span class="gallery-caption">차 안에서</span>
+    </div>
+</div>
+</div>
+
+<!-- ░░ TOTAL ░░ -->
+<div class="total-band">
+  <div class="container">
+    <p class="total-label">Total Expenses</p>
+    <p class="total-num mono">2,266,540</p>
+    <p style="font-family:var(--f-kr);font-size:13px;color:var(--ink-3);margin-top:0.2rem">원</p>
+    <p class="total-sub">19명 · 2026. 05. 30 — 31 · 강원도 영월</p>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    2026 SFA 영월 여행 경비 리포트
+  </div>
+</footer>
+
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span class="modal-title" id="modal-title"></span>
+      <button class="modal-close" id="modal-close">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+<script>
+const RECEIPTS = {
+  "r_lunch1": "images/receipt_r_lunch1.jpg",
+  "r_cu1": "images/receipt_r_cu1.jpg",
+  "r_cu2": "images/receipt_r_cu2.jpg",
+  "r_mart": "images/receipt_r_mart.jpg",
+  "r_emart": "images/receipt_r_emart.jpg",
+  "r_bbq": "images/receipt_r_bbq.jpg",
+  "r_chicken": "images/receipt_r_chicken.jpg",
+  "r_resort": "images/receipt_r_resort.jpg",
+  "r_cu3": "images/receipt_r_cu3.jpg",
+  "r_resort2": "images/receipt_r_resort2.jpg",
+  "r_coffee": "images/receipt_r_coffee.jpg",
+  "r_lunch2": "images/receipt_r_lunch2.jpg",
+  "r_cu4": "images/receipt_r_cu4.jpg",
+  "r_coupang1": "images/receipt_r_coupang1.jpg",
+  "r_coupang2": "images/receipt_r_coupang2.jpg",
+};
+
+
+const overlay = document.getElementById('modal-overlay');
+const modalTitle = document.getElementById('modal-title');
+const modalBody  = document.getElementById('modal-body');
+
+function openModal(title, bodyHTML) {
+  modalTitle.textContent = title;
+  modalBody.innerHTML = bodyHTML;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+overlay.addEventListener('click', e => { if(e.target === overlay) closeModal(); });
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC-GpD4ESyI7wq0LXnxJc0n5VPmWp2OCTg",
+  authDomain: "sfayw-10d11.firebaseapp.com",
+  databaseURL: "https://sfayw-10d11-default-rtdb.firebaseio.com",
+  projectId: "sfayw-10d11",
+  storageBucket: "sfayw-10d11.firebasestorage.app",
+  messagingSenderId: "120209623788",
+  appId: "1:120209623788:web:8109f9571420959eba33c9"
+};
+
+const DB_URL = firebaseConfig.databaseURL + "/accounts";
+let sheetAccounts = {};
+
+async function loadAccounts() {
+  try {
+    const res = await fetch(DB_URL + ".json");
+    const data = await res.json();
+    if (data) {
+      sheetAccounts = {};
+      Object.values(data).forEach(entry => {
+        if (entry && entry.name) {
+          sheetAccounts[entry.name] = entry;
+        }
+      });
+    }
+  } catch(e) {
+    console.warn("계좌 불러오기 실패:", e);
+  }
+}
+
+async function saveAccountToSheet(name, bank, num, acctName) {
+  try {
+    const key = name.replace(/[^a-z0-9가-힣]/gi, '_');
+    const res = await fetch(`${DB_URL}/${key}.json`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, bank, num, acctName, updatedAt: new Date().toLocaleString('ko-KR') })
+    });
+    const data = await res.json();
+    if (!data.error) {
+      sheetAccounts[name] = { bank, num, acctName };
+      return { ok: true };
+    }
+    return { error: data.error };
+  } catch(e) {
+    console.error("저장 실패:", e);
+    return { error: e.toString() };
+  }
+}
+
+loadAccounts();
+
+document.querySelectorAll('tr.has-receipt').forEach(tr => {
+  tr.addEventListener('click', () => {
+    const key = tr.dataset.receipt;
+    const img = RECEIPTS[key];
+    const label = tr.querySelector('td:nth-child(3)')?.textContent?.trim() || '영수증';
+    if (!img) return;
+    openModal(label, `<img class="modal-img" src="${img}" alt="영수증">`);
+  });
+});
+
+const FIXED_ACCOUNT = { bank:'우리은행', num:'1002-936-889221', name:'이슬기' };
+
+function getSavedAccounts() {
+  try { return JSON.parse(localStorage.getItem('receiveAccounts')||'{}'); } catch(e){ return {}; }
+}
+function saveAccount(name, data) {
+  const all = getSavedAccounts();
+  all[name] = data;
+  localStorage.setItem('receiveAccounts', JSON.stringify(all));
+}
+
+document.querySelectorAll('.clickable-settle').forEach(card => {
+  card.addEventListener('click', async () => {
+    const kind = card.dataset.settle;
+    const name = card.dataset.name;
+    const amtEl = card.querySelector('.settle-result');
+    const amt = amtEl?.textContent || '';
+
+    if (kind === 'pay') {
+      openModal(name + ' — 송금 안내',
+        `<div class="settle-modal-kind">납부 안내</div>
+         <div class="settle-modal-name">${name}</div>
+         <div class="settle-modal-amt pay">${amt}</div>
+         <div class="account-box">
+           <div class="account-label">입금 계좌</div>
+           <div class="account-value">${FIXED_ACCOUNT.bank} ${FIXED_ACCOUNT.num}</div>
+           <div class="account-name">예금주 ${FIXED_ACCOUNT.name}</div>
+         </div>
+         <button class="copy-btn" onclick="
+           navigator.clipboard.writeText('${FIXED_ACCOUNT.num}').then(()=>{
+             this.textContent='복사됨 ✓'; this.classList.add('copied');
+             setTimeout(()=>{ this.textContent='계좌번호 복사'; this.classList.remove('copied'); },2000);
+           });
+         ">계좌번호 복사</button>`
+      );
+    } else {
+      openModal(name + ' — 입금 계좌', '<div style="text-align:center;padding:2rem;color:var(--ink-3);font-family:var(--f-kr)">불러오는 중...</div>');
+      await loadAccounts();
+      const saved = sheetAccounts[name];
+      modalTitle.textContent = name + ' — 입금 계좌';
+      modalBody.innerHTML = receiveModalBody(name, amt, saved);
+    }
+  });
+});
+
+function receiveModalBody(name, amt, saved) {
+  const id = name.replace(/[^a-z0-9가-힣]/gi,'_');
+  const numVal = saved ? saved.num : '';
+  const savedHTML = saved
+    ? `<div class="account-box">
+         <div class="account-label">등록된 계좌</div>
+         <div class="account-value">${saved.bank} ${saved.num}</div>
+         <div class="account-name">예금주 ${saved.acctName}</div>
+       </div>
+       <button class="copy-btn" onclick="
+         navigator.clipboard.writeText('${numVal}').then(()=>{
+           this.textContent='복사됨 ✓'; this.classList.add('copied');
+           setTimeout(()=>{ this.textContent='계좌번호 복사'; this.classList.remove('copied'); },2000);
+         });
+       ">계좌번호 복사</button>
+       <button class="copy-btn" style="margin-top:0.6rem;background:var(--paper-2);color:var(--ink-2)"
+         onclick="document.getElementById('form_${id}').style.display='flex';this.style.display='none'">
+         수정하기
+       </button>
+       <div id="form_${id}" style="display:none;margin-top:1rem">${inputFormHTML(name)}</div>`
+    : `<div style="font-size:13px;color:var(--ink-3);margin-bottom:1.2rem;font-family:var(--f-kr)">
+         아직 계좌가 등록되지 않았어요.<br>아래에 입력해주세요.
+       </div>
+       <div id="form_${id}">${inputFormHTML(name)}</div>`;
+
+  return `<div class="settle-modal-kind">수령 안내</div>
+     <div class="settle-modal-name">${name}</div>
+     <div class="settle-modal-amt receive">${amt}</div>
+     ${savedHTML}`;
+}
+
+function inputFormHTML(name) {
+  const id = name.replace(/[^a-z0-9가-힣]/gi,'_');
+  return `<div class="receive-input-group">
+    <div><label>은행명</label>
+      <input id="bank_${id}" type="text" placeholder="예: 우리은행"></div>
+    <div><label>계좌번호</label>
+      <input id="num_${id}" type="text" placeholder="예: 1002-123-456789"></div>
+    <div><label>예금주</label>
+      <input id="acct_${id}" type="text" placeholder="예금주명"></div>
+    <button class="save-btn" onclick="submitAccount('${name}')">저장</button>
+  </div>`;
+}
+
+async function submitAccount(name) {
+  const id = name.replace(/[^a-z0-9가-힣]/gi,'_');
+  const bank = document.getElementById('bank_'+id)?.value.trim();
+  const num  = document.getElementById('num_'+id)?.value.trim();
+  const acctName = document.getElementById('acct_'+id)?.value.trim();
+  if (!bank||!num||!acctName) { alert('모두 입력해주세요'); return; }
+
+  const btn = document.querySelector('#form_'+id+' .save-btn');
+  if (btn) { btn.textContent = '저장 중...'; btn.disabled = true; }
+
+  const result = await saveAccountToSheet(name, bank, num, acctName);
+  closeModal();
+  if (result.ok) {
+    setTimeout(()=>{ alert('✓ 계좌 정보가 저장되었습니다!\n이제 모든 사람이 볼 수 있어요.'); }, 200);
+  } else {
+    setTimeout(()=>{ alert('저장 실패: ' + (result.error||'오류')); }, 200);
+  }
+}
+</script>
+
+</body>
+</html>
